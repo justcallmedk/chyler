@@ -1,0 +1,15 @@
+.board-parent{
+	float:left;
+}
+.board {
+	width:32px;
+	height:32px;
+	color:#aaa;
+	float:left;
+	background-color: #fff;
+	text-align: center;
+}
+
+.board.blocked {
+	background-color: red;
+}
