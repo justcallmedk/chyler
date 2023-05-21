@@ -29,8 +29,8 @@ export default class Char extends Component {
 
     //check upper low boundaries
     if( x < 0 ||
-        x > ((this.props.sizeX-1) * 32) ||
-        y > ((this.props.sizeY-1) * 32) ||
+        x > ((this.props.size.x-1) * 32) ||
+        y > ((this.props.size.y-1) * 32) ||
         y < 0 ) {
       return true;
     }
@@ -51,8 +51,8 @@ export default class Char extends Component {
       'board_1_1' : 'blocked'
     };
 
-    for(let i = 0; i < this.props.sizeY; i++){
-      for (let j = 0; j < this.props.sizeX; j++) {
+    for(let i = 0; i < this.props.size.y; i++){
+      for (let j = 0; j < this.props.size.x; j++) {
         const key = 'board_' + j + '_' + i;
         const prop = this.tilesProp[key] ? this.tilesProp[key] : '';
         tiles.push(
@@ -75,7 +75,7 @@ export default class Char extends Component {
       <div className={'board-parent'} 
            id="boardParent"
            style={{
-            width: 32 * this.props.sizeX * this.props.scale
+            width: 32 * this.props.size.x * this.props.scale
            }}>
         {this.createBoard()}
         { React.cloneElement(

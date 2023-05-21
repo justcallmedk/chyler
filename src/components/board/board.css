@@ -6,10 +6,10 @@
 	height:32px;
 	color:#aaa;
 	float:left;
-	background-color: #fff;
+	background-color: #F1FAEE;
 	text-align: center;
 }
 
 .board.blocked {
-	background-color: red;
+	background-color: #E63946;
 }
