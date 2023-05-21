@@ -3,8 +3,7 @@
 in dedication to Janey Briggs, the great iconic character of 90's
 
 ## Dependencies
-Node.js
-
+Node.js<br />
 React
 
 ## Set up & Run
