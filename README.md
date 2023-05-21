@@ -16,10 +16,10 @@ npm start
 ```js
 <Board 
 	scale={2} // tile & character scale 
- 	scale={2} 
- 	size={{x:5,y:5}}> // size of the board
+ 	size={{x:5,y:5}} // size of the board
+>
 	<Char
-		model="15" //character position in sprite tile map
+		model="15" // character position in sprite tile map
 		tilemap="/assets/char_tilemap.png" // src of the sprite map
 		id="myChar">
     	sample character
