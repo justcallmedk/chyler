@@ -17,8 +17,11 @@ npm start
 	<Char
 		model="15" //character position in sprite tile map
 		tilemap="/assets/char_tilemap.png" // src of the sprite map
-   	id="myChar">
+		id="myChar">
     	sample character
 	</Char>
 </Board>
 ```
+
+## Movement
+Arrow & w a s d keys
