@@ -42,7 +42,7 @@ npm start
 		sample character
 	</Char>
 	<Char // you can create multiple characters
-		// ...
+	// ...
 	</Char>
 </Board>
 ```

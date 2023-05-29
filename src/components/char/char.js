@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { KEY_MAP, KEY_MAP_SIMPLE } from './keymap'
 import './char.css';
 
 export default class Char extends Component {
@@ -8,53 +9,13 @@ export default class Char extends Component {
     //global
     this.PIXEL_SIZE = this.props.pixelSize;
     this.MOVING_SPEED = props.speed;
-
-    //multiple key support for directions
-    this.KEY_MAP = {
-      ArrowDown : 'ArrowDown',
-      ArrowUp : 'ArrowUp',
-      ArrowRight : 'ArrowRight',
-      ArrowLeft : 'ArrowLeft',
-      w:'ArrowUp',
-      a:'ArrowLeft',
-      s:'ArrowDown',
-      d:'ArrowRight'
-    }
-
-    this.KEY_MAP_SIMPLE = {
-      ArrowDown : {
-        DIR_POSITION : 0,
-        MOVING_POSITION : this.PIXEL_SIZE * -3,
-        MOVING_OFFSET : {
-          dir : 'top',
-          offset : 1
-        }
-      },
-      ArrowUp : {
-        DIR_POSITION : this.PIXEL_SIZE * -1,
-        MOVING_POSITION : this.PIXEL_SIZE * -2,
-        MOVING_OFFSET : {
-          dir : 'top',
-          offset : -1
-        }
-      },
-      ArrowRight : {
-        DIR_POSITION : this.PIXEL_SIZE * -2,
-        MOVING_POSITION : this.PIXEL_SIZE * -1,
-        MOVING_OFFSET : {
-          dir : 'left',
-          offset : 1
-        },
-      },
-      ArrowLeft : {
-        DIR_POSITION : this.PIXEL_SIZE * -3,
-        MOVING_POSITION : this.PIXEL_SIZE * -4,
-        MOVING_OFFSET : {
-          dir : 'left',
-          offset : -1
-        },
-      }
+    this.ACTION = { // action map to func
+      spin : this.spin
     };
+
+    //multiple key support for directions (defined in ./keymap)
+    this.KEY_MAP = KEY_MAP;
+    this.KEY_MAP_SIMPLE = KEY_MAP_SIMPLE(this.PIXEL_SIZE);
 
     this.MOVING_TIMEOUT = undefined;
     //this is how the vertical pos is picked for the sprite sheet on which char model is desired.
@@ -91,7 +52,7 @@ export default class Char extends Component {
         else {
           startPos = {
             x: this.props.start.x,
-            y: this. props.start.y-this.props.index
+            y: this.props.start.y-this.props.index
           }
         }
       }
@@ -101,6 +62,11 @@ export default class Char extends Component {
       this.setState({
         position:position
       });
+
+      //test custom action
+      if(!this.props.active && this.props.action && this.ACTION[this.props.action]) {
+        this.ACTION[this.props.action]();
+      }
     }
   }
 
@@ -128,7 +94,7 @@ export default class Char extends Component {
       let counter = 0;
 
       function move() {
-        const newPos = JSON.parse(JSON.stringify(that.state.position));
+        const newPos = JSON.parse(JSON.stringify(that.state.position)); // ?
         newPos.y = that.MODEL_Y_POSITION + that.KEY_MAP_SIMPLE[key].MOVING_POSITION;
         //assuming the sprite sheet has 8 animations for directional moving ...
         if(counter >= 8){
@@ -158,7 +124,7 @@ export default class Char extends Component {
       },this.MOVING_SPEED * 10); //interval is equivalent of refresh rate
 
     }
-  }
+  };
 
   handleKeyUp = (event) => {
     clearTimeout(this.MOVING_TIMEOUT);
@@ -180,7 +146,20 @@ export default class Char extends Component {
         position : position
       });
     }
-  }
+  };
+
+  spin = () => {
+    const that = this;
+    let i = 0;
+    this.MOVING_TIMEOUT = setInterval(function() {
+      const newPos = that.state.position;
+      newPos.y = that.MODEL_Y_POSITION + Object.values(that.KEY_MAP_SIMPLE)[i].MOVING_POSITION;
+      that.setState({
+        position: newPos
+      });
+      i = i >= 3 ? 0 : ++i;
+    },1000);
+  };
 
   render() {
     return (

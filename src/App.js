@@ -37,6 +37,7 @@ function App() {
           model={16}
           speed={5}
           start={{x:24,y:14}}
+          action={'spin'}
           tilemap={'/assets/char_tilemap.png'}>doggo</Char>
         <Char 
           active={false}
@@ -55,7 +56,9 @@ function App() {
         Move : Arrow keys / w a s d <br /><br />
         Change Model : c<br /><br />
         Debug : z<br /><br />
-        <a href="https://github.com/justcallmedk/chyler" target="_blank">Github</a>
+        <a href="https://github.com/justcallmedk/chyler"
+           target="_blank"
+           rel="noreferrer">Github</a>
       </div>
     </div>
   );

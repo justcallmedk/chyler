@@ -17,7 +17,7 @@ export default class Char extends Component {
 
     //generate range for blocked coords
     for(const key in this.tiles) {
-      if(this.tiles[key].status == this.BLOCKED) {
+      if(this.tiles[key].status === this.BLOCKED) {
         const coord = this.getCoordFromBoardKey(key);
         const blockedCoord = {
           left: coord.left * this.PIXEL_SIZE,
@@ -64,7 +64,7 @@ export default class Char extends Component {
     //check collision
     const boardX = Math.floor(x/this.PIXEL_SIZE);
     const boardY = Math.floor(y/this.PIXEL_SIZE);
-    const boardPerms = [
+    const boardPerms = [ // for efficiency, only check adjcent blocks
       [-1,-1],[0,-1],[1,-1],
       [-1,0 ],[0,0] ,[1,0 ],
       [-1,1 ],[0,1 ],[1,1 ]
@@ -87,7 +87,6 @@ export default class Char extends Component {
   createBoard = () => {
     let tiles = [];
     //some blocked positions
-    //TODO : handle character collision
     this.tiles = {};
     for(const prop in this.props.tiles) {
       for(const range of this.props.tiles[prop]) {
@@ -135,7 +134,7 @@ export default class Char extends Component {
           }
         )
       );
-      if(child.props.active) {
+      if(child.props.active) { // don't block yourself
         continue;
       }
       this.tiles[this.getBoardKeyFromCoord(child.props.start.x,child.props.start.y)] = {
