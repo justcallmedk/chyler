@@ -3,10 +3,10 @@
 in dedication to Janey Briggs, the great iconic character of 90's
 
 ## Description
-Simple [sprite](https://en.wikipedia.org/wiki/Sprite_(computer_graphics)) engine for web
+Simple lightweight [sprite](https://en.wikipedia.org/wiki/Sprite_(computer_graphics)) engine for web
 
 ## Demo
-[http:chyler.sooda.io](http:chyler.sooda.io)
+[https://chyler.sooda.io](https://chyler.sooda.io)
 
 ## Dependencies
 Node.js<br />
@@ -53,10 +53,13 @@ Change Model : c<br />
 Debug : z<br />
 
 ## In Development
-More refined custom action
+### More refined custom action
 ```js
 action = {
 	event : 'idle' || 'interact',
-	do : 'spin' || 'dialog("hello")' || customFunc()
+	do : 'spin' || 'dialog("hello")' || customFunc
 };
 ```
+### Interaction
+- NPC faces the direction of player when adjacent
+- Space bar triggers action
