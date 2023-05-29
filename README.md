@@ -21,9 +21,9 @@ npm start
 ## Configuration
 ```js
 <Board 
-	scale={2} 				// tile & character scale 
- 	size={{x:5,y:5}} 	// size of the board
-	tiles={{ 					// range of blocked tiles
+	scale={2} // tile & character scale 
+ 	size={{x:5,y:5}} // size of the board
+	tiles={{ // range of blocked tiles
 		blocked : [
 			{ x:[5,21],   y:[16,17] },
 			{ x:[26,33],  y:[16,17] }
@@ -33,9 +33,9 @@ npm start
  	id="myBoard">
 
 	<Char
-		active={true}			// playable vs npc
-		speed={5} 				// speed of the movement
-		model={15} 				// character position in sprite tile map
+		active={true} // playable vs npc
+		speed={5} // speed of the movement
+		model={15} // character position in sprite tile map
 		start={{x:0,y:0}} // starting position
 		tilemap={'/assets/char_tilemap.png'} // src of the sprite map
 		id="myChar">
