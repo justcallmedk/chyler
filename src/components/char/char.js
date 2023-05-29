@@ -5,10 +5,9 @@ export default class Char extends Component {
   constructor(props) {
     super(props);
 
-    console.info(this.props);
     //global
-    this.PIXEL_SIZE = 32;
-    this.MOVING_SPEED = 2.5;
+    this.PIXEL_SIZE = this.props.pixelSize;
+    this.MOVING_SPEED = props.speed;
 
     //multiple key support for directions
     this.KEY_MAP = {
@@ -60,6 +59,7 @@ export default class Char extends Component {
     this.MOVING_TIMEOUT = undefined;
     //this is how the vertical pos is picked for the sprite sheet on which char model is desired.
     this.MODEL_Y_POSITION = this.PIXEL_SIZE * this.props.model * -5;
+    this.model = this.props.model;
 
     //state
     this.state = {
@@ -71,19 +71,31 @@ export default class Char extends Component {
         top : undefined
       }
     }
+
   }
 
   componentDidMount() {
-    document.addEventListener("keydown", this.handleKeyDown, false);
-    document.addEventListener("keyup", this.handleKeyUp, false);
-    console.info('component did mount (char)');
-
-    //sets starting position
-    const coord = this.props.getCoord('board_0_0'); 
-
+    if(this.props.active) {
+      document.addEventListener("keydown", this.handleKeyDown, false);
+      document.addEventListener("keyup", this.handleKeyUp, false);
+    }
     let position = this.state.position;
-
     if(!this.state.position.left){
+      //sets starting position
+      let startPos = {x:0,y:0};
+      if(this.props.start) {
+        if(this.props.start.x >= this.props.size.x ||
+           this.props.start.y >= this.props.size.y) {
+          console.error('Start position out of bound');
+        }
+        else {
+          startPos = {
+            x: this.props.start.x,
+            y: this. props.start.y-this.props.index
+          }
+        }
+      }
+      const coord = this.props.getCoord(startPos); 
       position.left = coord.left;
       position.top = coord.top;
       this.setState({
@@ -93,6 +105,16 @@ export default class Char extends Component {
   }
 
   handleKeyDown = (event) => {
+    if(event.key === 'c') { // change character
+      let newPos = this.state.position;
+      this.model = this.model+1;
+      this.MODEL_Y_POSITION = this.PIXEL_SIZE * this.model * -5;
+      newPos.y = this.MODEL_Y_POSITION 
+              this.setState({
+          position: newPos
+        });
+      return;
+    }
 
     //if there's an ongoing moving animation OR key unknown, ignore
     const key = this.KEY_MAP[event.key]
@@ -112,25 +134,28 @@ export default class Char extends Component {
         if(counter >= 8){
           counter = 0;
         }
+        const oldPos = newPos[that.KEY_MAP_SIMPLE[key].MOVING_OFFSET.dir]; //save old position in case blocked
         newPos.x = that.PIXEL_SIZE * counter * -1;
         newPos[that.KEY_MAP_SIMPLE[key].MOVING_OFFSET.dir] += (that.KEY_MAP_SIMPLE[key].MOVING_OFFSET.offset * that.MOVING_SPEED);
-        if(that.props.checkCoord(newPos.left,newPos.top)) {
+        
+        //check if coord is blocked
+        if(that.props.checkCoord(newPos.left,newPos.top, that.KEY_MAP_SIMPLE[key].MOVING_OFFSET.dir)) {
+          newPos[that.KEY_MAP_SIMPLE[key].MOVING_OFFSET.dir] = oldPos;
           clearTimeout(that.MOVING_TIMEOUT);
           that.MOVING_TIMEOUT = undefined;
-          return;
         }
 
         that.setState({
           position: newPos
         });
-
         counter++;
       }
 
       move();
       this.MOVING_TIMEOUT = setInterval(function() {
         move();
-      },125);
+      // TODO : What's the optimal interval rate?
+      },this.MOVING_SPEED * 10); //interval is equivalent of refresh rate
 
     }
   }
@@ -169,7 +194,6 @@ export default class Char extends Component {
              zoom : this.props.scale,
              backgroundPositionX : this.state.position.x + 'px',
              backgroundPositionY : this.state.position.y + 'px',
-             position : 'absolute',
              left : this.state.position.left + 'px',
              top : this.state.position.top + 'px'
            }}

@@ -1,15 +1,32 @@
 .board-parent{
 	float:left;
+	background-repeat: no-repeat;
 }
 .board {
 	width:32px;
 	height:32px;
-	color:#aaa;
 	float:left;
-	background-color: #F1FAEE;
 	text-align: center;
 }
 
-.board.blocked {
+.board.board-show-grid {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+	border: 1px #F1FAEE dotted;
+}
+
+.board.board-show-grid.blocked {
 	background-color: #E63946;
+	opacity: 0.5;
+}
+
+.board span {
+	display:none;
+}
+
+.board-show-grid span{
+	display:block;
+	color:#F1FAEE;
+	font-size:6px;
 }
