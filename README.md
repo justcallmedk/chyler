@@ -41,7 +41,7 @@ npm start
 		id="myChar">
 		sample character
 	</Char>
-	<Char 	// you can create multiple characters
+	<Char // you can create multiple characters
 		// ...
 	</Char>
 </Board>
