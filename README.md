@@ -36,7 +36,7 @@ npm start
 		start={{x:0,y:0}} // starting position
 		tilemap="/assets/char_tilemap.png" // src of the sprite map
 		id="myChar">
-    	sample character
+			sample character
 	</Char>
 	<Char 	// you can create multiple characters
 		// ...
