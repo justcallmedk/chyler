@@ -54,7 +54,8 @@ function App() {
       <div className={'help'}>
         Move : Arrow keys / w a s d <br /><br />
         Change Model : c<br /><br />
-        Debug : z
+        Debug : z<br /><br />
+        <a href="https://github.com/justcallmedk/chyler" target="_blank">Github</a>
       </div>
     </div>
   );

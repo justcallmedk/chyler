@@ -2,20 +2,19 @@
 	float:left;
 	background-repeat: no-repeat;
 }
+
 .board {
 	width:32px;
 	height:32px;
 	float:left;
 	text-align: center;
 }
-
 .board.board-show-grid {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 	border: 1px #F1FAEE dotted;
 }
-
 .board.board-show-grid.blocked {
 	background-color: #E63946;
 	opacity: 0.5;
