@@ -2,6 +2,9 @@
 
 in dedication to Janey Briggs, the great iconic character of 90's
 
+## Demo
+[http:chyler.sooda.io](http:chyler.sooda.io)
+
 ## Dependencies
 Node.js<br />
 React
@@ -17,14 +20,15 @@ npm start
 <Board 
 	scale={2} // tile & character scale 
  	size={{x:5,y:5}} // size of the board
-    tiles={{ // range of blocked tiles
-      blocked : [
-        { x:[5,21],   y:[16,17] },
-        { x:[26,33],  y:[16,17] }
-      ]
-    }}
-    tilemap={'/assets/board_tilemap.gif'} // src of the board map
-    id="myBoard">
+	tiles={{ // range of blocked tiles
+		blocked : [
+			{ x:[5,21],   y:[16,17] },
+			{ x:[26,33],  y:[16,17] }
+		]
+	}}
+ 	tilemap={'/assets/board_tilemap.gif'} // src of the board map
+ 	id="myBoard">
+
 	<Char
 		active={true} // playable vs npc
 		speed={5} // speed of the movement
@@ -34,9 +38,13 @@ npm start
 		id="myChar">
     	sample character
 	</Char>
-	// you can create multiple characters
+	<Char 	// you can create multiple characters
+		// ...
+	</Char>
 </Board>
 ```
 
-## Movement
-Arrow & w a s d keys
+## Control
+Move : Arrow keys / w a s d<br />
+Change Model : c<br />
+Debug : z<br />
