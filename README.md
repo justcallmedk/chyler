@@ -3,10 +3,10 @@
 in dedication to Janey Briggs, the great iconic character of 90's
 
 ## Description
-Simple sprite(https://en.wikipedia.org/wiki/Sprite_(computer_graphics)) engine for web
+Simple [sprite](https://en.wikipedia.org/wiki/Sprite_(computer_graphics)) engine for web
 
 ## Demo
-http:chyler.sooda.io](http:chyler.sooda.io)
+[http:chyler.sooda.io](http:chyler.sooda.io)
 
 ## Dependencies
 Node.js<br />
