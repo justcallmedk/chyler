@@ -1,6 +1,6 @@
 # Project Chyler
 
-in dedication to Janey Briggs, the great iconic character of 90's
+in dedication to [Janey Briggs](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjWw7jO4Zr_AhXXEVkFHeOrCVEQFnoECCQQAQ&url=https%3A%2F%2Fwww.imdb.com%2Ftitle%2Ftt0277371%2Fcharacters%2Fnm0500200&usg=AOvVaw3p-dzIgfWzdvx1hcNjVBUj), the great iconic character of 90's
 
 ## Description
 Simple lightweight [sprite](https://en.wikipedia.org/wiki/Sprite_(computer_graphics)) engine for web
