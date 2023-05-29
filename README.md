@@ -12,7 +12,7 @@ Simple [sprite](https://en.wikipedia.org/wiki/Sprite_(computer_graphics)) engine
 Node.js<br />
 React
 
-## Set up & Run
+## Set Up & Run
 ```bash
 npm install
 npm start
@@ -51,3 +51,12 @@ npm start
 Move : Arrow keys / w a s d<br />
 Change Model : c<br />
 Debug : z<br />
+
+## In Development
+More refined custom action
+```js
+action = {
+	event : 'idle' || 'interact',
+	do : 'spin' || 'dialog("hello")' || customFunc()
+};
+```
