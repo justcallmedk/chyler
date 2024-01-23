@@ -21,6 +21,8 @@ React
 npm install
 npm start
 ```
+## Deployment
+ADD ME
 
 ## Configuration
 ```js
