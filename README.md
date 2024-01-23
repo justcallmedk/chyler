@@ -8,6 +8,10 @@ Simple lightweight [sprite](https://en.wikipedia.org/wiki/Sprite_(computer_graph
 ## Demo
 [https://chyler.sooda.io](https://chyler.sooda.io)
 
+### Assets
+[Board](https://guttykreum.itch.io/osaka-city-game-assets) <br />
+[Characters](https://guttykreum.itch.io/jrpg-character-pack)
+
 ## Dependencies
 Node.js<br />
 React
